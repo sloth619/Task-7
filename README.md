@@ -26,7 +26,7 @@ The task is to retrieve relevant ELSST concepts from a fixed concept pool given 
 
 ## Fine-tuning Results
 
-| Model | Hyperparameter | Method | Recall@5 | Recall@10| Recall@100
+| Model | Hyperparameter | Method | Recall@5 | Recall@10| Recall@20
 |---|---|---|---|---|---:|
 | Qwen3-Embedding-0.6B |lr=1e-4 r=16, alpha=32, dropout=0.05 | query-positive-hard negative triplet fine-tuning | 0.5295 |0.6401 |-
 | Octen-Embedding-8B | lr=5e-5,  r=16, alpha=32, dropout=0.05| query-positive-hard negative triplet fine-tuning | 0.7398 |0.8427|0.9150
