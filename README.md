@@ -4,7 +4,7 @@ This section reports current Track 1 retrieval results on the ELSST validation s
 
 The task is to retrieve relevant ELSST concepts from a fixed concept pool given a long social-science passage. The main metric is **Recall@5**.
 
-## Zero-shot Results
+## Embedding Zero-shot Results
 
 | Model | Dimension | Recall@5 |
 |---|---:|---:|
@@ -24,10 +24,20 @@ The task is to retrieve relevant ELSST concepts from a fixed concept pool given 
 | BGE large v1.5 | 1024 | 0.2469 |
 | llama-embed-nemotron-8b | 4096 | 0.3570 |
 
-## Fine-tuning Results
+## Embedding Fine-tuning Results
 
 | Model | Hyperparameter | Method | Recall@5 | Recall@10| Recall@20
 |---|---|---|---|---|---:|
-| Qwen3-Embedding-0.6B |lr=1e-4 r=16, alpha=32, dropout=0.05 | query-positive-hard negative triplet fine-tuning | 0.5295 |0.6401 |-
-| Octen-Embedding-8B | lr=5e-5,  r=16, alpha=32, dropout=0.05| query-positive-hard negative triplet fine-tuning | 0.7398 |0.8427|0.9150
-| Octen-Embedding-8B | lr=5e-5,  r=64, alpha=128, dropout=0.05| query-positive-hard negative triplet fine-tuning | 0.7421 |0.8563|0.9183
+| Qwen3-Embedding-0.6B |lr=1e-4 r=16, alpha=32,bs=64 | query-positive-hard negative triplet fine-tuning | 0.5295 |0.6401 |-
+| Octen-Embedding-8B | lr=5e-5, r=16, alpha=32,bs=64| query-positive-hard negative triplet fine-tuning | 0.7398 |0.8427|0.9150
+| Octen-Embedding-8B | lr=5e-5, r=64, alpha=128,bs=64| query-positive-hard negative triplet fine-tuning | 0.7421 |0.8563|0.9183
+| Octen-Embedding-8B | lr=5e-5, r=256, alpha=256,bs=64| query-positive-hard negative triplet fine-tuning | 0.7367 |0.8514|0.9162
+
+## Reranker Zero-shot Results (On Octen-Embedding-8B top-20 outputs)
+| Model | Recall@5 |
+|---|---:|
+| Yuan-embedding-2.0-en |0.4556|
+| Qwen3-Reranker-0.6B |0.5741|
+| Qwen3-Reranker-4B |0.6985|
+| Qwen3-Reranker-8B |0.7054|
+
