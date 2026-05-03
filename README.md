@@ -48,4 +48,8 @@ The task is to retrieve relevant ELSST concepts from a fixed concept pool given 
 | Qwen3-Reranker-0.6B |0.5741|
 | Qwen3-Reranker-4B |0.6985|
 | Qwen3-Reranker-8B |0.7054|
+| voyage rerank-2.5 |0.6405|
+| bge-reranker-v2-m3 |0.243|
+| Jina Reranker v2 Base Multilingual |0.499|
+| bge-reranker-v2-minicpm-layerwise |0.5638|
 
