@@ -1,8 +1,6 @@
 ## Track 1 Retrieval Experiments
 
-This section reports current Track 1 retrieval results on the ELSST validation set.
-
-The task is to retrieve relevant ELSST concepts from a fixed concept pool given a long social-science passage. The main metric is **Recall@5**.
+Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The main metric is **Recall@5**.
 
 ## Embedding Zero-shot Results
 
@@ -60,6 +58,15 @@ The task is to retrieve relevant ELSST concepts from a fixed concept pool given 
 |---|---|---|---|---|---|---|
 | Qwen3-Reranker-8B | lr=2e-5, r=64, alpha=128,bs=128 | BCE | Octen Top-20 候选构造 query-concept pairs，BCE 二分类精排 | 0.8289 | 0.9035 | 0.923 |
 
+
+## Track 2 Generate Experiments
+
+Given a passage-level prompt, output the hidden concepts as a short semantic set.
+
+| Model | Hyperparameter | Objective | Method | P | R | F1 |
+|---|---|---|---|---|---|---|
+| Qwen2.5-7B-Instruct | lr=1e-5,epoch=2, bs=16 | SFT | Track2 generation baseline, semantic-set generation, BERTScore matching tau=0.85  | 0.6899 | 0.5986 | 0.5827 |
+| Qwen2.5-7B-Instruct | lr=1e-5,epoch=2, bs=16 | DPO | SFT adapter initialized DPO LoRA, semantic-set generation, BERTScore tau=0.85 | 0.6899 | 0.5986 | 0.5827 |
 
 
 
