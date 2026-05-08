@@ -65,8 +65,10 @@ Given a passage-level prompt, output the hidden concepts as a short semantic set
 
 | Model | Hyperparameter | Objective | Method | P | R | F1 |
 |---|---|---|---|---|---|---|
-| Qwen2.5-7B-Instruct | lr=1e-5,epoch=2, bs=16 | SFT | Track2 generation baseline, semantic-set generation, BERTScore matching tau=0.85  | 0.6899 | 0.5986 | 0.5827 |
-| Qwen2.5-7B-Instruct | lr=1e-5,epoch=2, bs=16 | DPO | SFT adapter initialized DPO LoRA, semantic-set generation, BERTScore tau=0.85 | 0.6899 | 0.5986 | 0.5827 |
+| Qwen2.5-7B-Instruct | lr=1e-5,epoch=2, bs=16,tau=0.85 | SFT | Track2 generation baseline, semantic-set generation | 0.6899 | 0.5986 | 0.5827 |
+| Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | DPO | SFT adapter initialized DPO LoRA, semantic-set generation | 0.8054 | 0.48 | 0.5572 |
+| Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | ORPO | ORPO LoRA from base model, semantic-set generation | 0.2409 | 0.4348 | 0.2905 |
+| Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | ORPO | SFT adapter initialized ORPO LoRA, semantic-set generation | 0.8131 | 0.3849 | 0.4834 |
 
 
 
