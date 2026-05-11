@@ -53,11 +53,16 @@ Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The
 | Jina Reranker v2 Base Multilingual |0.499|
 | bge-reranker-v2-minicpm-layerwise |0.5638|
 
-## Reranker Zero-shot Fine-tuning Results
+## Reranker Fine-tuning Results
 | Model | Hyperparameter | Loss | Method | Recall@5 | Recall@10 | Recall@20 |
 |---|---|---|---|---|---|---|
 | Qwen3-Reranker-8B | lr=2e-5, r=64, alpha=128,bs=128 | BCE | Octen Top-20 候选构造 query-concept pairs，BCE 二分类精排 | 0.8289 | 0.9035 | 0.923 |
 | Qwen3-Reranker-8B | lr=2e-5, r=64, alpha=128,bs=128 | BCE | Octen Top-50 候选构造 query-concept pairs，BCE 二分类精排 | 0.84 | 0.9193 | 0.958 |
+
+## Model Ensemble Results
+| Model | Hyperparameter | Objective | Method | Recall@5 | Recall@10 | Recall@20 |
+|---|---|---|---|---|---|---|
+| Octen-Embedding-8B (0.77) + Qwen3-Reranker-8B (0.84) | k=4, weights=[0.4, 0.6] | RRF | weight: 0.00~1.00 步长 0.05 k: 1~20 每个整数 + 25~100 步长5 + 150/200/300 | 0.8537 | 0.9278 | 0.9592 |
 
 ## Track 2 Generate Experiments
 
