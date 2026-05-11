@@ -57,7 +57,7 @@ Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The
 | Model | Hyperparameter | Loss | Method | Recall@5 | Recall@10 | Recall@20 |
 |---|---|---|---|---|---|---|
 | Qwen3-Reranker-8B | lr=2e-5, r=64, alpha=128,bs=128 | BCE | Octen Top-20 候选构造 query-concept pairs，BCE 二分类精排 | 0.8289 | 0.9035 | 0.923 |
-
+| Qwen3-Reranker-8B | lr=2e-5, r=64, alpha=128,bs=128 | BCE | Octen Top-50 候选构造 query-concept pairs，BCE 二分类精排 | 0.84 | 0.9193 | 0.958 |
 
 ## Track 2 Generate Experiments
 
