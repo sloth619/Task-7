@@ -63,6 +63,7 @@ Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The
 | Model | Hyperparameter | Objective | Method | Recall@5 | Recall@10 | Recall@20 |
 |---|---|---|---|---|---|---|
 | Octen-Embedding-8B (0.77) + Qwen3-Reranker-8B (0.84) | k=4, weights=[0.4, 0.6] | RRF | weight: 0.00\~1.00 步长 0.05 k: 1\~20 每个整数 + 25\~100 步长5 + 150/200/300 | 0.8537 | 0.9278 | 0.9592 |
+| Octen-Embedding-8B (0.77) + Qwen3-Reranker-8B (0.84) | alpha=0.16, norm=zscore | Weighted Score Fusion | alpha 0.00\~1.00 步长0.02 × norm {minmax, zscore} = 102组合，alpha=retrieval权重，reranker权重=1-alpha | 0.8576 | 0.9291 | 0.9596 |
 
 ## Track 2 Generate Experiments
 
