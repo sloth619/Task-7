@@ -40,6 +40,7 @@ Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The
 | Octen-Embedding-8B | lr=5e-5, r=256, alpha=512,bs=128 | MNRL | 笛卡尔积 triplets | 0.7367 | 0.8514 | 0.9162 | 0.7832 |
 | Octen-Embedding-8B | lr=1e-5, r=64, alpha=128,bs=128 | MNRL | 用best ckpt挖掘的hard negatives继续训练 | 0.7699 | 0.8655 | 0.9236 | 0.8176 |
 | Octen-Embedding-8B | lr=5e-5, r=64, alpha=128,bs=128 | MNRL | 用best ckpt挖掘的hard negatives从零训练 | 0.7529 | 0.8572 | 0.9194 | 0.8032 |
+| Qwen3-Embedding-8B │ lr=5e-5, r=64, alpha=128, bs=128 │ MNRL │ 笛卡尔积 triplets │ 0.7431   │ 0.8507    │ 0.9153    │ 0.7970|
 
 ## Reranker Zero-shot Results (On Octen-Embedding-8B top-20 outputs)
 | Model | Recall@5 | NDCG@10 |
