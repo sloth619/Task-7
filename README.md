@@ -56,8 +56,10 @@ Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The
 ## Reranker Fine-tuning Results
 | Model | Hyperparameter | Loss | Method | Recall@5 | Recall@10 | Recall@20 |
 |---|---|---|---|---|---|---|
-| Qwen3-Reranker-8B | lr=2e-5, r=64, alpha=128,bs=128 | BCE | Octen Top-20 候选构造 query-concept pairs，BCE 二分类精排 | 0.8289 | 0.9035 | 0.923 |
-| Qwen3-Reranker-8B | lr=2e-5, r=64, alpha=128,bs=128 | BCE | Octen Top-50 候选构造 query-concept pairs，BCE 二分类精排 | 0.84 | 0.9193 | 0.958 |
+| Qwen3-Reranker-8B | lr=2e-5, r=64, alpha=128,bs=128 | BCE | Octen Top-20 候选构造 query-concept pairs, BCE 二分类精排 | 0.8289 | 0.9035 | 0.923 |
+| Qwen3-Reranker-8B | lr=2e-5, r=64, alpha=128,bs=128 | BCE | Octen Top-50 候选构造 query-concept pairs, BCE 二分类精排 | 0.84 | 0.9193 | 0.958 |
+| Qwen3-Reranker-8B | lr=2e-5, r=64, alpha=128,bs=128 | BCE | Octen Top-20 包含所有正例 | 0.8297 | 0.9032 | 0.923 |
+| Qwen3-Reranker-8B | lr=2e-5, r=64, alpha=128, bs=128, margin=1.0 | Pairwise Margin | Octen Top-50 候选构造 query-concept pairs, Pairwise Margin 精排 | 0.7958 | 0.8979 | 0.9503 |
 
 ## Model Ensemble Results
 | Model | Hyperparameter | Objective | Method | Recall@5 | Recall@10 | Recall@20 |
