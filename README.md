@@ -1,6 +1,6 @@
 ## Track 1 Retrieval Experiments
 
-Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The main metric is **Recall@5**.
+Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The main metric is **NDCG@10**.
 
 ## Embedding Zero-shot Results
 
@@ -69,7 +69,7 @@ Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The
 
 ## Track 2 Generate Experiments
 
-Given a passage-level prompt, output the hidden concepts as a short semantic set.
+Given a passage-level prompt, output the hidden concepts as a short semantic set.The main metric is **F1**.
 
 | Model | Hyperparameter | Objective | Method | P | R | F1 |
 |---|---|---|---|---|---|---|
