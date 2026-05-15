@@ -2,6 +2,16 @@
 
 Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The main metric is **NDCG@10**.
 
+## Test Scores
+| Model | Hyperparameter | Objective | Method | Val Score | Test Score |
+| :--- | :--- | :--- | :--- | :---: | :---: |
+| Octen-Embedding-8B (0.77) + Qwen3-Reranker-8B (0.84) | k=4, weights=[0.4, 0.6] | RRF | weight: 0.00\~1.00 步长 0.05 k: 1\~20 每个整数 + 25\~100 步长5 + 150/200/300 | 0.887 | 0.9219 |
+| Octen-Embedding-8B (0.77) + Qwen3-Reranker-8B (0.84) | k=3, weights=[0.25, 0.75] | RRF | weight: 0.00\~1.00 步长 0.05 k: 1\~20 每个整数 + 25\~100 步长5 + 150/200/300 | 0.8904 | 0.9211 |
+| Octen-Embedding-8B (0.77) + Qwen3-Reranker-8B (0.84) | alpha=0.275, norm=minmax | Weighted Score Fusion | alpha 0.00\~1.00 步长0.02 × norm {minmax, zscore} = 102组合， alpha=retrieval权重， reranker权重=1-alpha | 0.894 | 0.9284 |
+| Octen-Embedding-8B | lr=1e-5, r=64, alpha=128,bs=128 | MNRL | 用best ckpt挖掘的hard negatives继续训练 | 0.8176 | 0.862 |
+| Qwen3-Embedding-0.6B | lr=1e-4 r=16, alpha=32,bs=384 | MNRL | 笛卡尔积 triplets | 0.5871 | 0.725 |
+| Qwen3-Reranker-8B | lr=2e-5, r=64, alpha=128,bs=128 | BCE | Octen Top-50 候选构造 query-concept pairs, BCE 二分类精排 | 0.8805 | 0.9144 |
+
 ## Embedding Zero-shot Results
 
 | Model | Dimension | Recall@5 | NDCG@10 |
