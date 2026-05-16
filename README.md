@@ -1,4 +1,4 @@
-## Track 1 Retrieval Experiments
+# Track 1 Retrieval Experiments
 
 Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The main metric is **NDCG@10**.
 
@@ -78,7 +78,7 @@ Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The
 | Octen-Embedding-8B (0.77) + Qwen3-Reranker-8B (0.84) | k=4, weights=[0.4, 0.6] | RRF | weight: 0.00\~1.00 步长 0.05 k: 1\~20 每个整数 + 25\~100 步长5 + 150/200/300 | 0.8537 | 0.9278 | 0.9592 | 0.887 |
 | Octen-Embedding-8B (0.77) + Qwen3-Reranker-8B (0.84) | alpha=0.16, norm=zscore | Weighted Score Fusion | alpha 0.00\~1.00 步长0.02 × norm {minmax, zscore} = 102组合，alpha=retrieval权重，reranker权重=1-alpha | 0.8576 | 0.9291 | 0.9596 | 0.8931 |
 
-## Track 2 Generate Experiments
+# Track 2 Generate Experiments
 
 Given a passage-level prompt, output the hidden concepts as a short semantic set.The main metric is **F1**.
 
@@ -89,5 +89,13 @@ Given a passage-level prompt, output the hidden concepts as a short semantic set
 | Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | ORPO | ORPO LoRA from base model, semantic-set generation | 0.2409 | 0.4348 | 0.2905 |
 | Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | ORPO | SFT adapter initialized ORPO LoRA, semantic-set generation | 0.8131 | 0.3849 | 0.4834 |
 
+## Track1 retriever top-K as Track2 prediction
 
+| Model | Hyperparameter | P | R | F1 |
+| :--- | :--- | :--- | :--- | :--- |
+| ScoreFusion | K=1, no LLM | 0.9894 | 0.4549 | 0.5769 |
+| ScoreFusion | K=2, no LLM | 0.8638 | 0.6909 | 0.7140 |
+| ScoreFusion | K=3, no LLM | 0.7478 | 0.8295 | 0.7359 |
+| ScoreFusion | K=4, no LLM | 0.6419 | 0.9073 | 0.7070 |
+| ScoreFusion | K=5, no LLM | 0.5516 | 0.9506 | 0.6593 |
 
