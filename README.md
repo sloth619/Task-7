@@ -82,12 +82,27 @@ Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The
 
 Given a passage-level prompt, output the hidden concepts as a short semantic set.The main metric is **F1**.
 
+## Fine-tuning Results
 | Model | Hyperparameter | Objective | Method | P | R | F1 |
 |---|---|---|---|---|---|---|
 | Qwen2.5-7B-Instruct | lr=1e-5,epoch=2, bs=16,tau=0.85 | SFT | Track2 generation baseline, semantic-set generation | 0.6899 | 0.5986 | 0.5827 |
 | Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | DPO | SFT adapter initialized DPO LoRA, semantic-set generation | 0.8054 | 0.48 | 0.5572 |
 | Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | ORPO | ORPO LoRA from base model, semantic-set generation | 0.2409 | 0.4348 | 0.2905 |
 | Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | ORPO | SFT adapter initialized ORPO LoRA, semantic-set generation | 0.8131 | 0.3849 | 0.4834 |
+| Qwen2.5-7B-Instruct | lr=1e-5, epoch=2, bs=16, QLoRA, top-K=5 | Candidate SFT | 2.43 | Track1 ScoreFusion top-5 + SFT selection | 0.8968 | 0.7639 | 0.7805 |
+
+## Track1 Retriever Top-K as Track2 Prediction (Zero-Shot LLM)
+| Model | Top-k | avg_pred | P | R | F1 |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Qwen2.5-7B-Instruct | 20 | 2.99 | 0.6338 | 0.6591 | 0.5739 |
+| Qwen3-4B-Instruct-2507 | 20 | 2.41 | 0.2333 | 0.4054 | 0.2707 |
+| Qwen3.5-4B | 20 | 4.97 | 0.5095 | 0.8848 | 0.6099 |
+| Qwen3-8B | 20 | 5 | 0.5215 | 0.9068 | 0.6248 |
+| Qwen3.5-9B | 20 | 4.98 | 0.5267 | 0.9045 | 0.6276 |
+| Qwen2.5-7B-Instruct | 5 | 2.82 | 0.7696 | 0.7918 | 0.728 |
+| Qwen3.5-9B | 5 | 4.17 | 0.6315 | 0.9096 | 0.6983 |
+| Qwen3.5-4B | 5 | 4.35 | 0.6148 | 0.9211 | 0.6912 |
+| Qwen3-8B | 5 | 4.47 | 0.6023 | 0.9221 | 0.6815 |
 
 ## Track1 retriever top-K as Track2 prediction
 
