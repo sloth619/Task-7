@@ -110,13 +110,14 @@ Given a passage-level prompt, output the hidden concepts as a short semantic set
 | Qwen3.5-4B | 5 | 4.35 | 0.6148 | 0.9211 | 0.6912 |
 | Qwen3-8B | 5 | 4.47 | 0.6023 | 0.9221 | 0.6815 |
 
-## Track1 retriever top-K as Track2 prediction
+## Track1 retriever top-K as Track2 prediction(No LLM)
 
-| Model | Hyperparameter | P | R | F1 |
-| :--- | :--- | :--- | :--- | :--- |
-| ScoreFusion | K=1, no LLM | 0.9894 | 0.4549 | 0.5769 |
-| ScoreFusion | K=2, no LLM | 0.8638 | 0.6909 | 0.7140 |
-| ScoreFusion | K=3, no LLM | 0.7478 | 0.8295 | 0.7359 |
-| ScoreFusion | K=4, no LLM | 0.6419 | 0.9073 | 0.7070 |
-| ScoreFusion | K=5, no LLM | 0.5516 | 0.9506 | 0.6593 |
+| Model | Hyperparameter | avg_pred | Method | P | R | F1 |
+| :--- | :--- | :---: | :--- | :---: | :---: | :---: |
+| ScoreFusion | K=1 | 1 | Track1 retriever top-K as Track2 prediction | 0.9894 | 0.4549 | 0.5769 |
+| ScoreFusion | K=2 | 2 | Track1 retriever top-K as Track2 prediction | 0.8638 | 0.6909 | 0.714 |
+| ScoreFusion | K=3 | 3 | Track1 retriever top-K as Track2 prediction | 0.7478 | 0.8295 | 0.7359 |
+| ScoreFusion | K=4 | 4 | Track1 retriever top-K as Track2 prediction | 0.6419 | 0.9073 | 0.707 |
+| ScoreFusion | K=5 | 5 | Track1 retriever top-K as Track2 prediction | 0.5516 | 0.9506 | 0.6593 |
+| ScoreFusion | K=5, threshold=0.75 | 2.88 | Track1 ScoreFusion top-5, score threshold filtering | 0.8318 | 0.8209 | 0.7837 |
 
