@@ -82,6 +82,12 @@ Given a passage, rank the ELSST concepts in concept_pool.jsonl by relevance. The
 
 Given a passage-level prompt, output the hidden concepts as a short semantic set.The main metric is **F1**.
 
+## Test Scores
+| Model | Hyperparameter | Objective | Method | Val Score | Test Score |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Qwen2.5-7B-Instruct | lr=1e-5,epoch=2, bs=16,tau=0.85 | SFT | Track2 generation baseline, semantic-set generation | 0.5827 | 0.6082 |
+| ScoreFusion | K=3, no LLM | - | Track1 retriever top-K as Track2 prediction | 0.7359 | 0.7602 |
+
 ## Fine-tuning Results
 | Model | Hyperparameter | Objective | Method | P | R | F1 |
 |---|---|---|---|---|---|---|
