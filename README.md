@@ -121,3 +121,11 @@ Given a passage-level prompt, output the hidden concepts as a short semantic set
 | ScoreFusion | K=5 | 5 | Track1 retriever top-K as Track2 prediction | 0.5516 | 0.9506 | 0.6593 |
 | ScoreFusion | K=5, threshold=0.75 | 2.88 | Track1 ScoreFusion top-5, score threshold filtering | 0.8318 | 0.8209 | 0.7837 |
 
+## count regressor (On ScoreFusion)
+| 模型 | n accuracy | MAE | avg_pred | Sem P | Sem R | Sem F1 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Ridge | 29.6% | 0.94 | 2.97 | 0.7883 | 0.8426 | 0.7777 |
+| RF | 31.2% | 0.95 | 2.99 | 0.7950 | 0.8439 | 0.7807 |
+| GBR | 28.7% | 1.04 | 2.98 | 0.7923 | 0.8342 | 0.7699 |
+| GBC | 34.4% | 1.11 | 2.99 | 0.8108 | 0.8140 | 0.7607 |
+
