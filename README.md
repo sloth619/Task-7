@@ -89,13 +89,22 @@ Given a passage-level prompt, output the hidden concepts as a short semantic set
 | ScoreFusion | K=3, no LLM | - | Track1 retriever top-K as Track2 prediction | 0.7359 | 0.7602 |
 
 ## Fine-tuning Results
-| Model | Hyperparameter | Objective | Method | P | R | F1 |
-|---|---|---|---|---|---|---|
-| Qwen2.5-7B-Instruct | lr=1e-5,epoch=2, bs=16,tau=0.85 | SFT | Track2 generation baseline, semantic-set generation | 0.6899 | 0.5986 | 0.5827 |
-| Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | DPO | SFT adapter initialized DPO LoRA, semantic-set generation | 0.8054 | 0.48 | 0.5572 |
-| Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | ORPO | ORPO LoRA from base model, semantic-set generation | 0.2409 | 0.4348 | 0.2905 |
-| Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | ORPO | SFT adapter initialized ORPO LoRA, semantic-set generation | 0.8131 | 0.3849 | 0.4834 |
-| Qwen2.5-7B-Instruct | lr=1e-5, epoch=2, bs=16, QLoRA, top-K=5 | Candidate SFT | 2.43 | Track1 ScoreFusion top-5 + SFT selection | 0.8968 | 0.7639 | 0.7805 |
+| Model | Hyperparameter | Objective | avg_pred | Method | P | R | F1 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Qwen2.5-7B-Instruct | lr=1e-5, epoch=2, bs=16, tau=0.85 | SFT | - | Track2 generation baseline, semantic-set generation | 0.6899 | 0.5986 | 0.5827 |
+| Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | DPO | - | SFT adapter initialized DPO LoRA, semantic-set generation | 0.8054 | 0.48 | 0.5572 |
+| Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | ORPO | - | ORPO LoRA from base model, semantic-set generation | 0.2409 | 0.4348 | 0.2905 |
+| Qwen2.5-7B-Instruct | lr=5e-6, epoch=1, bs=16, beta=0.1, tau=0.85 | ORPO | - | SFT adapter initialized ORPO LoRA, semantic-set generation | 0.8131 | 0.3849 | 0.4834 |
+| Qwen2.5-7B-Instruct | lr=1e-5, epoch=2, bs=16, r=16, alpha=32, top-K=5 | Candidate SFT | 2.43 | Track1 ScoreFusion top-5 + SFT selection | 0.8968 | 0.7639 | 0.7805 |
+| Qwen3.5-4B | lr=1e-5, epoch=2, bs=16, r=16, alpha=32, top-K=5 | Candidate SFT | 2.83 | Track1 ScoreFusion top-5 + SFT selection | 0.8658 | 0.8571 | 0.8287 |
+| Qwen3.5-9B | lr=1e-5, epoch=2, bs=32, r=16, alpha=32, top-K=5 | Candidate SFT | 2.63 | Track1 ScoreFusion top-5 + SFT selection | 0.8659 | 0.8104 | 0.7978 |
+| Qwen3.5-4B | lr=1e-5, epoch=2, bs=16, r=16, alpha=32, top-K=5 | Candidate SFT | 2.52 | Track1 ScoreFusion top-5 + SFT selection | 0.9219 | 0.8207 | 0.8400 |
+| Qwen3.5-4B | lr=1e-5, epoch=2, bs=16, r=16, alpha=32, top-K=7 | Candidate SFT | 2.74 | Track1 ScoreFusion top-7 + SFT selection | 0.8968 | 0.8412 | 0.8412 |
+| Qwen3.5-4B | lr=1e-5, epoch=2, bs=16, r=16, alpha=32, top-K=10 | Candidate SFT | 2.8 | Track1 ScoreFusion top-10 + SFT selection | 0.9069 | 0.8697 | 0.8654 |
+| Qwen3.5-4B | lr=1e-5, epoch=2, bs=16, r=64, alpha=128, top-K=10 | Candidate SFT | 2.77 | Track1 ScoreFusion top-10 + SFT selection | 0.9276 | 0.8797 | 0.8850 |
+| Qwen3.5-4B | lr=1e-5, epoch=2, bs=16, r=128, alpha=256, top-K=10 | Candidate SFT | 2.72 | Track1 ScoreFusion top-10 + SFT selection | 0.9403 | 0.8806 | 0.8945 |
+| Qwen3.5-4B | lr=1e-5, epoch=2, bs=16, r=256, alpha=512, top-K=10 | Candidate SFT | 2.62 | Track1 ScoreFusion top-10 + SFT selection | 0.9370 | 0.8807 | 0.8987 |
+| Qwen3.5-4B | lr=1e-5, epoch=2, bs=16, r=512, alpha=1024, top-K=10 | Candidate SFT | 2.76 | Track1 ScoreFusion top-10 + SFT selection | 0.9389 | 0.8915 | 0.9016 |
 
 ## Track1 Retriever Top-K as Track2 Prediction (Zero-Shot LLM)
 | Model | Top-k | avg_pred | P | R | F1 |
